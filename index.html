@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./lib/spritz/spritz.css" type="text/css" media="screen" />
+    <title>Quick Rep.</title>
+    <style type="text/css" media="screen">
+     body {
+       background-color: black;
+       color: lightgrey;
+     }
+     .spritz {
+       color: white
+     }
+     section a:link {
+       color: #4370ff
+     }
+     section a:hover {
+       color: #809fff
+     }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+    <div id="root" class="night">
+      <audio id="audiofile"
+             src=#
+             controls></audio><br>
+      <div class="spritz">
+        <div class="spritz-word">
+        </div>
+      </div>
+      <canvas id="the-canvas" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+    <section>
+      <p>
+        This course's content is licensed by <a xmlns:cc="http://creativecommons.org/ns#" href="http://cs.harvard.edu/malan" rel="cc:attributionURL">David J. Malan</a> of <a href="http://www.harvard.edu/">Harvard University</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License</a>
+      </p>
+    </section>
+
+    <script type="text/javascript" src="./lib/subtitles-parser/subtitles.parser.min.js"></script>
+    <script>
+     const stateSrc = {
+       audio: 'http://cdn.cs50.net/2015/fall/sections/9/javascript/javascript.mp3',
+       pdf: 'http://cdn.cs50.net/2015/fall/sections/9/javascript/javascript.pdf',
+       srt: 'http://cdn.cs50.net/2015/fall/sections/4/algorithms_summary/lang/en/algorithms_summary.srt',
+       worker: 'https://unpkg.com/pdfjs-dist/pdf.worker.min.js'
+     }
+     const audioSrc = stateSrc.audio
+
+     let syncData;
+     fetch(stateSrc.srt)
+       .then((res) => {
+         if(!res.ok) {
+           throw new Error('Network response is not ok')
+         }
+         return res.text()
+       })
+       .then((txt) => syncData = parser.fromSrt(txt, true))
+       .catch(err => console.error(err))
+     // on pdf load
+     function updateNumPages(pdfDoc_numPages) {
+       pager.updateNumPages(audioPlayer.duration * 1000, pdfDoc_numPages)
+     }
+    </script>
+    <script type="text/javascript" src="https://unpkg.com/pdfjs-dist/pdf.min.js" ></script>
+    <script type="text/javascript" src="./pdf.js"></script>
+    <script type="text/javascript" src="./lib/spritz/spritz.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+  </body>
+</html>

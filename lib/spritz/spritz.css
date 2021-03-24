@@ -1,0 +1,53 @@
+.spritz {
+  position: relative;
+  width: 30rem;
+  padding: 1rem 0 1.2rem;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  /* margin: 10rem auto */
+}
+.spritz:before, .spritz:after {
+  content: '';
+  position: absolute;
+  left: 40%;
+  height: 0.8rem;
+  width: 2px;
+  margin-left: -1px;
+  background-color: #000;
+}
+.night .spritz {
+  border-color: #555;
+}
+.night .spritz:before, .night .spritz:after {
+  background-color: #555;
+}
+.spritz:before {
+  top: 0;
+}
+.spritz:after {
+  bottom: 0;
+}
+
+.spritz-word {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  height: 3.2rem;
+  font-weight: 600;
+}
+.spritz-word div {
+  display: table-cell;
+}
+.spritz-word div:first-child {
+  width: 40%;
+  text-align: right;
+}
+.spritz-word div:nth-child(2) {
+  color: #e60000;
+}
+.night .spritz-word div:nth-child(2) {
+  color: #ff4d4d;
+}
+.spritz-word div:last-child {
+  width: 60%;
+  text-align: left;
+}
